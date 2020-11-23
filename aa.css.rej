@@ -1,0 +1,9 @@
+diff a/aa.css b/aa.css	(rejected hunks)
+@@ -3,6 +3,5 @@
+   padding:0;
+ 
+ }
+-分支2修改
+\ No newline at end of file
+ <<<<<<< HEAD
+ master修改
