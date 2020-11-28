@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+<script>
+    var arr = [1,2,3,4,5,6,7,8,9,10];
+    // const newArr = arr.sort(()=>{
+    //     return Math.random()>0.5?1:-1
+    // })
+    // console.log(newArr)
+    let newArr = []
+    let len = arr.length
+    for(var i = 0;i<len;i++){
+        let index = Math.floor(Math.random()*arr.length) //找到数组下标index
+        newArr.push(arr[index]); //将随机出的元素，存放新数组newArr中去
+        arr.splice(index,1) //
+    }
+    console.log(newArr)
+</script>
+</body>
+
+</html>
