@@ -8,7 +8,9 @@
     "express": "^4.17.1",
     "qs": "^6.9.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "vuex": "^3.6.0"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "serve:test": "set NODE_ENV=test&&vue-cli-service serve",
