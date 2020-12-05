@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隐式丢失</title>
+</head>
+<body>
+    <script>
+        //隐式丢失就是指被隐式绑定的函数丢失了绑定对象，从而默认绑定到window
+        // 这种情况就是比较容易出错却又非常常见
+        // 1.隐式丢失：函数别名
+        var a = 0;
+        function foo(){
+            console.log(this.a)
+        }
+        var obj = {
+            a:1,
+            foo:foo
+        }
+        // 把obj.foo()赋值给别名bar，造成隐式丢失的情况，因为只是把obj.foo()赋值了给了bar变量，而bar与obj对象毫无关系
+        var bar = obj.foo;
+        bar(); //0 
+        相当于
+        var a = 0;
+        var bar = function foo(){
+            console.log(this.a)
+        }
+        bar()
+
+        //2.参数传递
+        var a = 0;
+        function foo(){
+            console.log(this.a)
+        }
+        function bar(fn){
+            fn()
+        }
+        var obj = {
+            a:1,
+            foo:foo
+        }
+        // 把obj.foo当作参数传递到bar函数中,有隐式的函数复制fn = obj.foo, 只是把foo函数赋值给了fn，而fn与obj对象毫无关系，所以当前foo函数内部的this指向了window
+        bar(obj.foo) //0
+        等价于
+        var a = 0;
+        function bar(fn){
+            fn()
+        }
+        bar(function foo(){
+            console.log(this.a);
+        })
+
+        // 3.内置函数 setTimeout()和setInterval()第一个参数的回调函数中的this默认指向了window，跟第二种情况是类似
+        var a = 0;
+        function foo(){
+            console.log(this.a)
+        }
+        var obj = {
+            a:1,
+            foo:foo
+        }
+        setTimeout(obj.foo,1000) //0 window
+
+        // 4。间接调用
+        
+        function foo(){
+            console.log(this.a)
+        }
+        var a = 0;
+        var obj = {
+            a:1,
+            foo:foo
+        }
+        var p = {a:4}
+        // obj.foo(); //1
+        // // 立即调用
+        // // 将obj.foo函数对象赋值给p.foo函数，然后立即执行。相当与仅仅是foo()函数的立即调用，内部的this默认指向了window
+        // (p.foo = obj.foo)() //0
+        p.foo = obj.foo
+        // 将obj.foo赋值给p.foo函数，之后p.foo()函数再执行，其实是属于p对象的函数的指向，this指向当前的p对象
+        p.foo() //4
+        
+//5.其他情况（指向了window的特殊情况）
+function foo(){
+    console.log(this.a)
+}
+var a = 0;
+var obj = {
+    a:1,
+    foo:foo
+}
+// 都是立即执行函数，指向window
+(obj.foo = obj.foo)() //0
+(false || obj.foo)()  //0
+(1,obj.foo)() //0
+    </script>
+</body>
+</html>

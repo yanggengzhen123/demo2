@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>严格模式</title>
+</head>
+<body>
+<script>
+    //1.独立调用的函数内部的this指向了undefined
+    function fn(){
+        'use strict'
+        console.log(this);
+    }
+    fn() //undefined
+    //2.严格模式下,函数apply()和call()内部this始终是他们的第一个参数
+    var color = 'red';
+    function showColor(){
+        'use strict'
+        console.log(this.color);
+    }
+    showColor.call(undefined)
+</script>
+</body>
+</html>

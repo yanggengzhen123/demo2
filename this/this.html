@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this指向</title>
+</head>
+<body>
+    <!-- this绑定规则 -->
+    <!-- 默认绑定 -->
+    <script>
+        // this默认指向window
+        // 1.全局环境下this指向window
+        console.log(this) //window
+        // 2.函数独立调用，函数内部的this也指向window
+        // 3.被嵌套的函数独立调用时，this默认指向了window
+        function fn1(){
+            console.log(this); //window
+        }
+        fn1() //fn1() === window.fn1(),所以指向了window
+        var a = 1;
+        var obj = {
+            a:2,
+            foo:function(){
+                // 函数当作对象的方法来调用时候，this指向obj
+                var a = 3;
+                var that = this;
+                console.log(that.a) //2
+                function test(){
+                    console.log(this.a); //1
+                }
+                test()
+            }
+        }
+        obj.foo() //独立函数调用指向window
+
+        // 4.IIFE 自执行函数(自执行函数默认指向window,跟函数内部调用一致)
+        var a = 10;
+        var obj = {
+            a:2,
+            foo:function(){
+                console.log(this); //函数当作对象的方法来调用时候，this指向obj
+                (function test(){
+                    console.log(this.a);
+                })()  //自执行函数默认指向window,跟函数内部调用一致
+            }
+        }
+        obj.foo() // 10
+
+        var a = 10;
+        var obj = {
+            a:2,
+            foo:function(){
+                console.log(this); //函数当作对象的方法来调用时候，this指向obj
+                (function test(that){
+                    console.log(that.a);
+                })(this)  //自执行函数默认指向window,跟函数内部调用一致
+            }
+        }
+        obj.foo() // 10
+
+        //5.闭包 :this默认指向了window
+        var a = 0;
+        var obj = {
+            a:2,
+            foo:function(){
+                return function test(){
+                    return this.a //闭包 :this默认指向了window
+                }
+            }
+        }
+        var bb = obj.foo()
+        console.log(bb()) //0
+        
+    </script>
+</body>
+</html>

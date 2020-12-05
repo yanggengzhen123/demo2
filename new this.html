@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>new绑定</title>
+</head>
+<body>
+    <script>
+        function Fn() {
+            //如果是new关键来执行函数，相当于构造函数来实例化对象，那么内部的this指向了当前实例化的对象 
+            console.log(this); //Fn {}
+        }
+        var fn = new Fn()
+        console.log(fn); //Fn {}
+        
+        function Fn2(){
+            // this还是指向了当前的对象
+            console.log(this);
+            // 使用return关键来返回对象的时候，实例化出来的对象是当前的返回对象
+            return {
+                name:'zhen'
+            }
+        }
+        var fn2 =new Fn2() //Fn2 {}
+        console.log(fn2) // {name: "zhen"}
+
+        var Person ={
+            fav:function(){
+                return this
+            }
+        }
+        var p = new Person.fav();
+        console.log(p); //fav {}
+        console.log(p===Person.fav); //false
+        // 实例化出来的对象内部的属性constructor属性指向了当前的构造函数
+        console.log(p.__proto__.constructor === Person.fav);
+    </script>
+    
+</body>
+</html>

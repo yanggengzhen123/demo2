@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class This</title>
+</head>
+<body>
+<script>
+    // 类的本质实际上就是函数
+    //类 class xxx->容器/作用域/模块 ->壳子
+    // class Test1 {
+    //     constructor(){
+
+    //     }
+    //     say(){
+
+    //     }
+    //     static do(){
+
+    //     }
+    // }
+    // const test1 = new Test1()
+
+    // // 函数
+    // function Test2(){ //constructor
+
+        
+    // }
+    // Test2.prototype.say = function(){
+
+    // }
+    // Test2.do = function(){
+
+    // }
+    // const test2 = new Test2()
+    // class Test {
+
+    // }
+    // const test = new Test()
+    // console.log(test);
+    // class Father {
+    //     say(){
+    //         console.log('我是爸爸');
+    //     }
+    // }
+    // class Son extends Father{
+    //     constructor(){
+    //         super()
+    //     }
+    //     // say(){
+    //     //     return super.say()
+    //     // }
+    // }
+    // let son = new Son()
+    // son.say()
+    // function Star(uname,age){
+    //     this.uname = uname;
+    //     this.age = age;
+    // }
+    // Star.prototype.sing = function(){
+    //     console.log(this.uname+this.age);
+    // }
+    // let ldh = new Star('刘德华',18);
+    // let zxy = new Star('张学友',19);
+    // ldh.sing()
+    // value = 1;
+    // var obj = {
+    //     value:0,
+    //     fn:function(){
+    //         var f = function(){
+    //             this.value ++
+    //         }
+    //         f()
+    //     }
+    // }
+    // obj.fn()
+    // console.log(value);
+    // let name = "Jay";
+    const name = "Jay"
+    const person = {
+        name:"Swift",
+        pro:{
+            name:"Michael",
+            getName:function(){
+                return this.name
+            }
+        }
+    }
+    console.log(person.pro.getName());
+    const getName = person.pro.getName;
+    console.log(getName());
+</script>
+</body>
+</html>
