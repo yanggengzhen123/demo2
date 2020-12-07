@@ -77,19 +77,83 @@
     // obj.fn()
     // console.log(value);
     // let name = "Jay";
-    const name = "Jay"
-    const person = {
-        name:"Swift",
-        pro:{
-            name:"Michael",
-            getName:function(){
-                return this.name
-            }
+    // var name = "Jay"
+    // const person = {
+    //     name:"Swift",
+    //     pro:{
+    //         name:"Michael",
+    //         getName:function(){
+    //             return this.name
+    //         }
+    //     }
+    // }
+    // console.log(person.pro.getName());
+    // const getName = person.pro.getName;
+    // console.log(getName());
+    // 
+    // function fn(){
+    //     var num = 10;
+    //     function fun(){
+    //         console.log(num);
+    //     }
+    //     return fun
+    // }
+    // var f = fn()
+    // f()
+    // name = "Jay"
+    // const person = {
+    //     name:'Swift',
+    //     pro:{
+    //         name:'nike',
+    //         getName:function(){
+    //             return this.name;
+    //         }
+    //     }
+    // }
+    // console.log(person.pro.getName());
+    // const getN = person.pro.getName;
+    // console.log(getN())
+    // function fn(n){
+    //     if(n === 1) return 1;
+    //     return n*fn(n-1)
+    // }
+    // fn(1)
+    //深拷贝
+    // function deepClone(newobj,oldobj){
+    //     for(var k in oldobj){
+    //         //获取属性值oldobj[k]
+    //         var item = oldobj[k];
+    //         // 判断这个值是否是数组
+    //         if(item instanceof Array){
+    //             newobj[k] = [];
+    //             deepClone(newobj[k],item)
+    //         }else if(item instanceof Object){
+    //             // 判断这个值是否是对象
+    //             newobj[k] = {};
+    //             deepClone(newobj[k],item)
+    //         }else {
+    //             // 属于简单类型
+    //             newobj[k] = item;
+    //         }
+    //     }
+    // }
+    class Polygon {
+        constructor(height, width) {
+            this.name = 'Polygon';
+            this.height = height;
+            this.width = width;
+        }
+        }
+
+    class Square extends Polygon {
+        constructor(length) {
+            super(length, length);
+            this.name = 'Square';
         }
     }
-    console.log(person.pro.getName());
-    const getName = person.pro.getName;
-    console.log(getName());
+    let aa = new Square();
+    console.log(aa.name);
+    
 </script>
 </body>
 </html>
