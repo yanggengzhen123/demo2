@@ -1,14 +1,14 @@
 <template>
     <div>
-     <el-form label-width="100px" :model="{data:Form}">
+     <el-form label-width="100px" :model="dynamicValidateForm">
        <el-form-item
-          v-for="(item, index) in Form"
+          v-for="(item, index) in dynamicValidateForm.Form"
           :label="'input' + (index+1)"
           :key="index"
           :prop="'Form.' + index + '.value'"
-          :rules="{required: true, message:'111', trigger: 'blur'}"
+          :rules="{required: true, message:`请输入input${index+1}值`, trigger: 'blur'}"
         >
-          <el-input  v-model="Form[index]" style="width:50%"></el-input>
+          <el-input  v-model="item.value" style="width:50%"></el-input>
           <el-button @click.prevent="removeInput(index)" type="danger">删除</el-button>
         </el-form-item>
      </el-form>
@@ -22,24 +22,29 @@ export default {
         return {
           inputValue:null,
           allValue:100,
-          Form:[null]
+          dynamicValidateForm:{
+            Form:[
+              {value:''}
+            ]
+          }
+          
         };
     },
     computed: {
       disabled(){
         this.inputValue = null
-        this.Form.forEach((item,index)=>{
-          this.inputValue += Number(item)
+        this.dynamicValidateForm.Form.forEach((item,index)=>{
+          this.inputValue += Number(item.value)
         })
         return this.inputValue === 100? false : true
       }
     },
     methods: {
       addInput(){
-        this.Form.push(null)
+        this.dynamicValidateForm.Form.push({value:''})
       },
       removeInput(index){
-        this.Form.splice(index,1)
+        this.dynamicValidateForm.Form.splice(index,1)
       }
     },
 };
