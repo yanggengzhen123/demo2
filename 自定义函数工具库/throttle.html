@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手写函数节流</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        window.addEventListener('scroll',throttle(function(){
+            console.log(Date.now());
+        },500))
+        function throttle(callback,wait){
+            // 定义开始时间
+            let start = 0
+            // 返回结果是一个函数
+            return function(e){
+                let now = Date.now()
+                if(now - start > wait){
+                    callback.call(this,e)
+                    start = now
+                }
+            }
+        }
+    </script>
+</body>
+</html>
