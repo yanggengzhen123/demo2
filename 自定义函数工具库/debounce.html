@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防抖</title>
+</head>
+<body>
+    <input type="text">
+    <script>
+        let input = document.querySelector('input')
+        // input.onkeydown = function(e){
+        //     console.log(e.keyCode);
+        // }
+        input.onkeydown = debounce(function(e){
+            console.log(e.keyCode);
+        },1000)
+        function debounce(callback,time){
+            //定时器变量
+            let timeId = null
+            // 返回值一定是个函数，否则无法触发回调
+            return function(e){
+                //timeId !== null 证明已经有一个timeif在跑，先清除掉再继续跑
+                if(timeId !== null){
+                    clearTimeout(timeId)
+                }
+                //启动定时器
+                timeId = setTimeout(()=>{
+                    callback.call(this,e)
+                    // 重置定时器变量
+                    timeId = null
+                },time)
+                
+            }
+        }
+    </script>
+</body>
+</html>
