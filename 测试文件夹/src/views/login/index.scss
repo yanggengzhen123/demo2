@@ -1,0 +1,316 @@
+
+
+// @supports (-webkit-mask: none) and (not (cater-color: #fff)) {
+//   .login-container .el-input input {
+//     color: #fff;
+//   }
+// }
+
+/* reset element-ui css */
+@import "~@/styles/variables.scss";
+$login_background:rgb(28,40,72,.8);
+.login-container {
+  background: $bodyColor!important;
+  position: relative;
+  min-height: 100%;
+  width: 100%;
+  overflow: hidden;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  .login_block {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+  }
+  .login_wrap {
+    animation: moveto .8s;
+  }
+  .bg_img {
+    position: absolute;
+    min-width: 900px;
+    max-width: 900px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .centerRect {
+    margin:0 auto; 
+    position:relative;
+    width: 320px;
+    height: 40px;
+    background: $login_background;
+    border-top: 1px solid $loginBorder;
+    .login_title {
+      position: absolute;
+      transform: translate(-50%);
+      left: 50%;
+      top: -50px;
+      color: #0a90ff;
+      font-size: 24px;
+      width: 100%;
+      text-align: center;
+      letter-spacing: 2px;
+      text-shadow: 3px 4px 0px 0px #040000;
+    }
+  }
+  .leftRect {
+    position:absolute;
+    left: -114px;
+    top: -40px;
+    height: 40px;
+    width: 75px;
+    background: $login_background;
+    border-top: 1px solid $loginBorder;
+    border-left: 1px solid $loginBorder;
+    
+    .tri{
+      position:absolute;
+      right: -38px;
+      top: 1px;
+      width: 0;
+      height: 0;
+      border-width: 19px;
+      border-style: solid;
+      border-color: transparent transparent $login_background $login_background;
+    }
+    
+  }
+  .border-blue_wrap {
+    width: 34px;
+    height: 34px;
+    margin-left: 3px;
+    margin-top: 3px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .tri_border{
+    position: absolute;
+    width: 1px;
+    height: 55px;
+    background: $loginBorder;
+    transform: rotate(-45deg);
+    top: -28px;
+  }
+  .bottomRect {
+    background: $login_background;
+    position: absolute;
+    left: -1px;
+    bottom: -39px;
+    height: 39px;
+    width: 114px;
+    border-left: 1px solid $loginBorder;
+  }
+  .rightRect {
+    position:absolute;
+    right: -114px;
+    top: -40px;
+    height: 40px;
+    width: 75px;
+    background: $login_background;
+    border-top: 1px solid $loginBorder;
+    border-right: 1px solid $loginBorder;
+    .border-blue_wrap {
+      width: 34px;
+      height: 34px;
+      position: absolute;
+      right: 3px;
+      top: 3px;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .righttri{
+      position:absolute;
+      left: -38px;
+      top: 1px;
+      width: 0;
+      height: 0;
+      border-width: 19px;
+      border-style: solid;
+      border-color: transparent $login_background $login_background transparent;
+      .tri_border {
+        transform: rotate(45deg);
+        left: -1px;
+      }
+    }
+  }
+  .rightBottomRect {
+    position: absolute;
+    bottom: -40px;
+    height: 40px;
+    width: 115px;
+    right: -1px;
+    background: $login_background;
+    border-right: 1px solid $loginBorder;
+  }
+  .login_main {
+    background: $login_background;
+    width: 548px;
+    margin: 0 auto;
+    padding-top: 10px;
+    border-left: 1px solid $loginBorder;
+    border-right: 1px solid $loginBorder;
+    border-bottom: 1px solid $loginBorder;
+  }
+
+  .el-input {
+    display: inline-block;
+    height: 47px;
+    width: 85%;
+    color: #3e68c1;
+    input {
+      background: transparent;
+      border: 0px;
+      -webkit-appearance: none;
+      border-radius: 0px;
+      padding: 12px 5px 12px 15px;
+      color: #fff;
+      height: 47px;
+      caret-color: #fff;
+    }
+  }
+
+  .el-form-item {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    color: #454545;
+  }
+}
+.login-container {
+  min-height: 100%;
+  width: 100%;
+  background-color: #2d3a4b;
+  overflow: hidden;
+
+  .login-form {
+    position: relative;
+    width: 320px;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .tips {
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 10px;
+
+    span {
+      &:first-of-type {
+        margin-right: 16px;
+      }
+    }
+  }
+
+  .svg-container {
+    padding: 6px 5px 6px 15px;
+    color: #889aa4;
+    vertical-align: middle;
+    width: 36px;
+    display: inline-block;
+    img {
+      width: 100%;
+      height: auto;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .title-container {
+    position: relative;
+
+    .title {
+      font-size: 26px;
+      color: #eee;
+      margin: 0px auto 40px auto;
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+
+  .show-pwd {
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    font-size: 16px;
+    color: #889aa4;
+    cursor: pointer;
+    user-select: none;
+  }
+  .otherButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 400;
+    font-size: 14px;
+    color: #3e68c1;
+    span {
+      cursor: pointer;
+    }
+  }
+  footer {
+    width: 100%;
+    height: 45px;
+    .rotate_l {
+      transform: rotate(180deg);
+      margin: 0;
+      position: absolute;
+      left: 3px;
+      bottom: 3px;
+    }
+    .rotate_r {
+      position: absolute;
+      right: 3px;
+      transform: rotate(180deg);
+      bottom: 3px;
+    }
+  }
+  .login_button {
+    background: #3e68c1;
+    border-color:#3e68c1;
+    letter-spacing: 3px;
+  }
+  ::-webkit-input-placeholder {
+    color:#3e68c1;
+  }
+  .footer_title {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    bottom: 9%;
+    font-size: 12px;
+    font-weight: 400;
+    color: #3e68c1;
+    letter-spacing: 2px;
+  }
+  input:-webkit-autofill , textarea:-webkit-autofill, select:-webkit-autofill {  
+    -webkit-text-fill-color: #ededed !important;  
+    -webkit-box-shadow: 0 0 0px 1000px transparent  inset !important;  
+    background-color:transparent;  
+    background-image: none;  
+    transition: background-color 50000s ease-in-out 0s; 
+    }  
+    input {  
+    background-color:transparent;  
+    }
+}
+@keyframes moveto {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,174 @@
+@import "~@/styles/variables.scss";
+.wrap_t_title {
+    width: 127px;
+    // height: 44px;
+    padding: 14px 0;
+    background: $deepBlue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    // margin-left: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.top_wrap {
+    display: flex;
+    .wrap_t_title {
+        margin-right: 6px;
+    }
+}
+.tabbar_warp .just_between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.currentCtColor {
+    background: $chooseColor!important;
+}
+.tabbar_wrap_b {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .tabbar_wrap_b_l {
+        display: flex;
+        align-items: center;
+        color: #fff!important;
+        cursor: pointer;
+        font-size: 14px;
+        .el-dropdown-link {
+            color: #fff;
+            margin: 0 35px 0 6px;
+        }
+        .tabbar_wrap_b_title {
+            width: 60px;
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 25px 0 0px;
+        }
+    }
+}
+.bottom_wrap {
+    width: 100%;
+    background: #171C35;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+.Allimg_wrap {
+    // height: calc(100vh - 230px);
+    display: flex;
+    flex-wrap: wrap;
+    width: 1200px;
+    background: #fff;
+    margin: 0 auto;
+    padding-top: 6px;
+}
+.textImg_wrap {
+    .text_wrap {
+        color: #171C35;
+        margin: 0 22px;
+        .text_wrap_label {
+            font-size: 16px;
+            font-weight: 700;
+            
+        }
+        .text_wrap_time{
+            margin-top: 8px;
+            font-weight: 400;
+            font-size: 13px;
+            .status {
+                margin-left: 10px;
+                color: #999;
+            }
+        }
+    }
+}
+// 图片
+.img_container {
+    position: relative;
+    width: 260px;
+    height: 158px;
+    margin: 15px 20px 12px;
+    display: flex;
+    flex-wrap: wrap;
+    transition: all .6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+  /* 单个图片容器 */
+.img_container .figure {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    animation: move_img_container .6s cubic-bezier(0.77, 0, 0.175, 1);
+    overflow: hidden;
+    border-radius: 6px;
+    user-select: none;
+}
+@keyframes move_img_container
+{
+    from {
+        transform:scale(0, 0);
+        opacity: 0;
+    }
+    to {
+        transform:scale(1);  
+        opacity: 1;
+    }
+}
+.img_container .figure::before {
+    display: block;
+    position: absolute;
+    width: 100%;    
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    background: rgba(58, 12, 5, 0.5);
+    content: ' ';
+    font-size: 0;
+    opacity: 0;
+    transition: all .3s;
+    cursor: pointer;
+}
+.img_container .figure img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: all .3s;
+}
+
+/* 图片标题 */
+.img_container .figure .figcaption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 7;
+    opacity: 0;
+    font-size: 1em;
+    color: rgb(255, 255, 255);
+    transform: translate(-50%, -50%);
+    transition: all .3s;
+    text-align: center;
+    cursor: pointer;
+}
+/* 悬停图片的时候标题显示 */
+.img_container .figure:hover .figcaption {
+    opacity: 1;
+}
+
+.img_container .figure:hover img {
+    transform: scale(1.1, 1.1);
+}
+
+/* 悬停图片的时候遮罩显示 */
+.img_container .figure:hover::before {
+    opacity: 1;
+}
+.page_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 10px;
+    width: 100%;
+}
